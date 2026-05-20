@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autoestima Compartilhada – Bella Corps</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       VARIÁVEIS E RESET
+    ============================================= */
+    :root {
+      --rose:        #e8b4b8;
+      --rose-deep:   #c98a90;
+      --rose-light:  #f5dfe1;
+      --rose-pale:   #fdf0f1;
+      --nude:        #d4b5a0;
+      --nude-light:  #ede0d6;
+      --nude-pale:   #faf5f2;
+      --white:       #ffffff;
+      --gray-100:    #f7f7f7;
+      --gray-200:    #ececec;
+      --gray-400:    #b8b8b8;
+      --gray-700:    #6e6e6e;
+      --gray-900:    #2a2a2a;
+      --gold:        #c9a96e;
+      --gold-light:  #e8d5b0;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', sans-serif;
+
+      --radius-sm:   8px;
+      --radius-md:   16px;
+      --radius-lg:   28px;
+      --radius-xl:   40px;
+
+      --shadow-sm:   0 2px 12px rgba(201, 138, 144, 0.10);
+      --shadow-md:   0 6px 28px rgba(201, 138, 144, 0.18);
+      --shadow-lg:   0 16px 56px rgba(201, 138, 144, 0.22);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--nude-pale);
+      color: var(--gray-900);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* =============================================
+       CABEÇALHO / HERO
+    ============================================= */
+    header {
+      position: relative;
+      background: linear-gradient(150deg, #fdf0f1 0%, #f5dfe1 45%, #ede0d6 100%);
+      overflow: hidden;
+      padding: 72px 24px 80px;
+      text-align: center;
+    }
+
+    /* Ornamentos decorativos de fundo */
+    header::before,
+    header::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.22;
+      pointer-events: none;
+    }
+    header::before {
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, var(--rose) 0%, transparent 70%);
+      top: -180px;
+      right: -140px;
+    }
+    header::after {
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, var(--nude) 0%, transparent 70%);
+      bottom: -120px;
+      left: -100px;
+    }
+
+    /* Logo / marca */
+    .header-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+    .brand-line {
+      width: 48px;
+      height: 1px;
+      background: var(--rose-deep);
+      opacity: 0.6;
+    }
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+    }
+
+    header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gray-900);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    header h1 span {
+      color: var(--rose-deep);
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    header p.subtitle {
+      font-size: clamp(0.95rem, 2.2vw, 1.12rem);
+      font-weight: 300;
+      color: var(--gray-700);
+      max-width: 560px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Divisor ornamental */
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 40px auto 0;
+      position: relative;
+      z-index: 1;
+    }
+    .ornament span {
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--rose-deep));
+    }
+    .ornament span:last-child {
+      background: linear-gradient(90deg, var(--rose-deep), transparent);
+    }
+    .ornament i {
+      font-style: normal;
+      font-size: 1.1rem;
+      color: var(--rose-deep);
+    }
+
+    /* =============================================
+       LAYOUT PRINCIPAL
+    ============================================= */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    section {
+      margin-top: 72px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      margin-bottom: 10px;
+    }
+
+    h2.section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+      font-weight: 400;
+      color: var(--gray-900);
+      line-height: 1.25;
+      margin-bottom: 28px;
+    }
+
+    /* =============================================
+       TEXTO DE CONEXÃO
+    ============================================= */
+    .connection-block {
+      background: var(--white);
+      border-left: 3px solid var(--rose);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 32px 36px;
+      box-shadow: var(--shadow-sm);
+    }
+    .connection-block p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--gray-700);
+      line-height: 1.8;
+    }
+    .connection-block p em {
+      font-style: italic;
+      color: var(--rose-deep);
+    }
+
+    /* =============================================
+       COMO FUNCIONA – 3 PASSOS
+    ============================================= */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .step-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px 32px;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .step-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--rose-light), var(--rose-deep), var(--nude));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .step-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+    .step-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .step-number {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--rose-light), var(--rose-pale));
+      border: 1.5px solid var(--rose);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--rose-deep);
+    }
+
+    .step-icon {
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .step-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 10px;
+    }
+
+    .step-card p {
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* =============================================
+       BENEFÍCIOS – TABELA DESTAQUE
+    ============================================= */
+    .benefits-wrapper {
+      background: linear-gradient(135deg, #2a2020 0%, #3a2828 50%, #2e2020 100%);
+      border-radius: var(--radius-xl);
+      padding: 56px 48px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Textura sutil */
+    .benefits-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .benefits-wrapper .section-label {
+      color: var(--gold-light);
+    }
+
+    .benefits-wrapper h2.section-title {
+      color: var(--white);
+    }
+    .benefits-wrapper h2.section-title span {
+      color: var(--rose-light);
+    }
+
+    .benefits-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .benefits-table tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: background 0.25s ease;
+    }
+    .benefits-table tr:last-child { border-bottom: none; }
+    .benefits-table tr:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .benefits-table td {
+      padding: 16px 10px;
+      font-size: 0.98rem;
+      color: rgba(255,255,255,0.88);
+      font-weight: 300;
+    }
+
+    .benefits-table td.benefit-check {
+      width: 40px;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--rose-light);
+    }
+
+    .benefits-table td.benefit-desc {
+      flex: 1;
+    }
+
+    .benefit-highlight {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--rose-deep), var(--rose));
+      color: var(--white) !important;
+      font-weight: 600 !important;
+      font-size: 0.85rem !important;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-left: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Linha especial – prêmio maior */
+    .benefit-special-row {
+      background: linear-gradient(90deg, rgba(232,180,184,0.12), rgba(201,138,144,0.08)) !important;
+      border-top: 1px solid rgba(232,180,184,0.3) !important;
+      border-bottom: 1px solid rgba(232,180,184,0.3) !important;
+    }
+    .benefit-special-row td {
+      color: var(--white) !important;
+      font-weight: 500 !important;
+    }
+    .benefit-special-row .gift-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--rose-deep), var(--nude));
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* =============================================
+       REGRAS
+    ============================================= */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .rule-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.25s ease;
+    }
+    .rule-item:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .rule-dot {
+      width: 8px;
+      height: 8px;
+      min-width: 8px;
+      border-radius: 50%;
+      background: var(--rose);
+      margin-top: 6px;
+    }
+
+    .rule-item p {
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* =============================================
+       FRASE DE INCENTIVO
+    ============================================= */
+    .incentive-block {
+      text-align: center;
+      padding: 20px 0 8px;
+    }
+    .incentive-block p {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gray-700);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .incentive-block p span {
+      color: var(--rose-deep);
+    }
+
+    /* =============================================
+       BOTÃO CTA
+    ============================================= */
+    .cta-section {
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--rose-deep) 0%, #b07278 50%, var(--rose-deep) 100%);
+      background-size: 200% auto;
+      color: var(--white);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 20px 56px;
+      border-radius: var(--radius-xl);
+      box-shadow: 0 8px 32px rgba(201,138,144,0.45), 0 2px 8px rgba(201,138,144,0.2);
+      transition: background-position 0.45s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0);
+      transition: background 0.25s ease;
+    }
+    .cta-btn:hover {
+      background-position: right center;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 44px rgba(201,138,144,0.55), 0 4px 12px rgba(201,138,144,0.25);
+    }
+    .cta-btn:hover::before {
+      background: rgba(255,255,255,0.06);
+    }
+    .cta-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .cta-note {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      font-weight: 300;
+    }
+
+    /* =============================================
+       RODAPÉ
+    ============================================= */
+    footer {
+      background: var(--gray-900);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+    }
+    footer span {
+      color: var(--rose);
+    }
+
+    /* =============================================
+       RESPONSIVO – MOBILE
+    ============================================= */
+    @media (max-width: 680px) {
+      header {
+        padding: 56px 20px 64px;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .benefits-wrapper {
+        padding: 40px 24px;
+        border-radius: var(--radius-lg);
+      }
+
+      .benefits-table td {
+        font-size: 0.88rem;
+        padding: 14px 6px;
+      }
+
+      .benefit-highlight {
+        display: block;
+        margin-left: 0;
+        margin-top: 6px;
+        width: fit-content;
+      }
+
+      .rules-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-btn {
+        padding: 18px 36px;
+        font-size: 0.98rem;
+        display: block;
+        text-align: center;
+      }
+
+      .connection-block {
+        padding: 24px 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       CABEÇALHO / HERO
+  ============================================= -->
+  <header>
+    <div class="header-brand">
+      <span class="brand-line"></span>
+      <span class="brand-name">Bella Corps</span>
+      <span class="brand-line"></span>
+    </div>
+
+    <h1>Autoestima<br /><span>Compartilhada</span></h1>
+
+    <p class="subtitle">
+      Indique pessoas especiais para você e ganhe benefícios exclusivos em seus tratamentos.
+    </p>
+
+    <div class="ornament">
+      <span></span>
+      <i>✦</i>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- =============================================
+       CONTEÚDO PRINCIPAL
+  ============================================= -->
+  <main>
+
+    <!-- TEXTO DE CONEXÃO -->
+    <section aria-label="Sobre o programa">
+      <div class="connection-block">
+        <p>
+          Se você tem uma <em>experiência positiva</em> com a gente, por que não compartilhar isso
+          com quem você gosta? Criamos esse programa para recompensar você que ajuda outras pessoas
+          a também se sentirem mais confiantes e satisfeitas com o próprio corpo.
+        </p>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section aria-label="Como funciona">
+      <span class="section-label">Passo a passo</span>
+      <h2 class="section-title">Como funciona</h2>
+
+      <div class="steps-grid">
+
+        <div class="step-card">
+          <span class="step-icon">💌</span>
+          <div class="step-number">1</div>
+          <h3>Você indica</h3>
+          <p>Envie o nome e contato de pessoas que possam se interessar pelos nossos tratamentos.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-icon">📅</span>
+          <div class="step-number">2</div>
+          <h3>A pessoa agenda e fecha</h3>
+          <p>Nossa equipe entra em contato, realiza a avaliação e conduz o atendimento.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-icon">🎁</span>
+          <div class="step-number">3</div>
+          <h3>Você ganha benefícios</h3>
+          <p>A cada indicação que fechar, você acumula vantagens incríveis para seus tratamentos.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BENEFÍCIOS -->
+    <section aria-label="Benefícios">
+      <div class="benefits-wrapper">
+        <span class="section-label">Recompensas</span>
+        <h2 class="section-title">Seus <span>benefícios</span></h2>
+
+        <table class="benefits-table" role="table">
+          <tbody>
+
+            <tr>
+              <td class="benefit-check">✔</td>
+              <td class="benefit-desc">
+                1 indicado que fechar
+                <span class="benefit-highlight">20% de desconto</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="benefit-check">✔</td>
+              <td class="benefit-desc">
+                2 indicados que fecharem
+                <span class="benefit-highlight">30% de desconto</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="benefit-check">✔</td>
+              <td class="benefit-desc">
+                3 indicados que fecharem
+                <span class="benefit-highlight">40% de desconto</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="benefit-check">✔</td>
+              <td class="benefit-desc">
+                4 indicados que fecharem
+                <span class="benefit-highlight">50% de desconto</span>
+              </td>
+            </tr>
+
+            <!-- LINHA ESPECIAL – PRÊMIO MAIOR -->
+            <tr class="benefit-special-row">
+              <td class="benefit-check">🎁</td>
+              <td class="benefit-desc">
+                5 ou mais indicados que fecharem
+                <br />
+                <span class="gift-tag">✦ Fase II — SOS Lipo Sem Cortes</span>
+                <br />
+                <small style="font-size:0.78rem;opacity:0.65;font-weight:300;margin-top:4px;display:block;">
+                  Região a consultar com a equipe da clínica
+                </small>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- REGRAS -->
+    <section aria-label="Regras do programa">
+      <span class="section-label">Informações importantes</span>
+      <h2 class="section-title">Regras do programa</h2>
+
+      <div class="rules-grid">
+
+        <div class="rule-item">
+          <span class="rule-dot"></span>
+          <p>A indicação só é contabilizada após o fechamento do tratamento.</p>
+        </div>
+
+        <div class="rule-item">
+          <span class="rule-dot"></span>
+          <p>Não cumulativo com outros benefícios e promoções.</p>
+        </div>
+
+        <div class="rule-item">
+          <span class="rule-dot"></span>
+          <p>Sujeito à avaliação e aprovação da equipe da Bella Corps.</p>
+        </div>
+
+        <div class="rule-item">
+          <span class="rule-dot"></span>
+          <p>Promoção válida por <strong>30 dias</strong> a partir da data da indicação.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FRASE DE INCENTIVO -->
+    <section aria-label="Frase de incentivo">
+      <div class="incentive-block">
+        <p>
+          Indique apenas pessoas que você acredita que realmente possam se interessar.
+          Isso aumenta suas chances de <span>ganhar os benefícios</span>. 💗
+        </p>
+      </div>
+    </section>
+
+    <!-- BOTÃO FINAL -->
+    <div class="cta-section">
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSed6LPPQZ-sA0Ps81EgR8i15Un5W8HoLOTgKekkcdwk-_QQYg/viewform?usp=dialog"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cta-btn"
+        aria-label="Acessar formulário de indicação"
+      >
+        Quero indicar agora
+      </a>
+      <p class="cta-note">Você será direcionada para nosso formulário de indicação ✨</p>
+    </div>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <p>© 2025 <span>Bella Corps</span> — Todos os direitos reservados</p>
+  </footer>
+
+</body>
+</html>
